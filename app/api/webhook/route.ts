@@ -20,6 +20,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 })
   }
+      console.log("🚀 ~ POST ~ signature:", signature)
 
   const session = event.data.object as Stripe.Checkout.Session;
   const userId = session?.metadata?.userId;

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Loader2, Lock } from "lucide-react";
+import NextVideo from 'next-video';
 
 import { cn } from "@/lib/utils";
 import { useConfettiStore } from "@/hooks/use-confetti-store";
@@ -71,8 +72,11 @@ export const VideoPlayer = ({
           </p>
         </div>
       )}
+      {videoUrl}
       {!isLocked && (
-        <></>
+        <>
+         <NextVideo src={videoUrl} />
+        </>
         // <MuxPlayer
         //   title={title}
         //   className={cn(

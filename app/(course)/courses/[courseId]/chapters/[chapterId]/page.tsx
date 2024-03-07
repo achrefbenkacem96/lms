@@ -35,6 +35,8 @@ const ChapterIdPage = async ({
     chapterId: params.chapterId,
     courseId: params.courseId,
   });
+    console.log("🚀 ~ course:", course)
+    console.log("🚀 ~ blobData:", blobData)
 
   if (!chapter || !course) {
     return redirect("/")

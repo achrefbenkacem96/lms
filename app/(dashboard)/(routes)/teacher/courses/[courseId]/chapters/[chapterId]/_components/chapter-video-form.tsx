@@ -14,6 +14,7 @@ import NextVideo from 'next-video';
 
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
+import { Input } from "@/components/ui/input";
 
 interface ChapterVideoFormProps {
   initialData: Chapter & { blobData?: BlobData | null };
@@ -37,6 +38,7 @@ export const ChapterVideoForm = ({
   const router = useRouter();
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log("🚀 ~ onSubmit ~ values:", values)
     try {
       await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
       toast.success("Chapter updated");
@@ -82,14 +84,15 @@ export const ChapterVideoForm = ({
       )}
       {isEditing && (
         <div>
-          <FileUpload
+           <Input id="chapterVideo" type="file" />
+          {/* <FileUpload
             endpoint="chapterVideo"
             onChange={(url) => {
               if (url) {
                 onSubmit({ videoUrl: url });
               }
-            }}
-          />
+            }} 
+          />*/}
           <div className="text-xs text-muted-foreground mt-4">
            Upload this chapter&apos;s video
           </div>
