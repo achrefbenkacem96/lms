@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { useConfettiStore } from "@/hooks/use-confetti-store";
 
 interface VideoPlayerProps {
-  playbackId: string;
+  videoUrl: string;
   courseId: string;
   chapterId: string;
   nextChapterId?: string;
@@ -21,7 +21,7 @@ interface VideoPlayerProps {
 };
 
 export const VideoPlayer = ({
-  playbackId,
+  videoUrl,
   courseId,
   chapterId,
   nextChapterId,
@@ -72,16 +72,17 @@ export const VideoPlayer = ({
         </div>
       )}
       {!isLocked && (
-        <MuxPlayer
-          title={title}
-          className={cn(
-            !isReady && "hidden"
-          )}
-          onCanPlay={() => setIsReady(true)}
-          onEnded={onEnd}
-          autoPlay
-          playbackId={playbackId}
-        />
+        <></>
+        // <MuxPlayer
+        //   title={title}
+        //   className={cn(
+        //     !isReady && "hidden"
+        //   )}
+        //   onCanPlay={() => setIsReady(true)}
+        //   onEnded={onEnd}
+        //   autoPlay
+        //   videoUrl={videoUrl}
+        // />
       )}
     </div>
   )

@@ -25,7 +25,7 @@ const ChapterIdPage = async ({
   const {
     chapter,
     course,
-    muxData,
+    blobData,
     attachments,
     nextChapter,
     userProgress,
@@ -65,7 +65,7 @@ const ChapterIdPage = async ({
             title={chapter.title}
             courseId={params.courseId}
             nextChapterId={nextChapter?.id}
-            playbackId={muxData?.playbackId!}
+            videoUrl={blobData?.videoUrl!}
             isLocked={isLocked}
             completeOnEnd={completeOnEnd}
           />

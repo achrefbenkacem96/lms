@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
+import { del } from "@vercel/blob";
 
 const { Video } = new Mux(
   process.env.MUX_TOKEN_ID!,
@@ -28,7 +29,7 @@ export async function DELETE(
       include: {
         chapters: {
           include: {
-            muxData: true,
+            blobData: true,
           }
         }
       }
@@ -39,8 +40,8 @@ export async function DELETE(
     }
 
     for (const chapter of course.chapters) {
-      if (chapter.muxData?.assetId) {
-        await Video.Assets.del(chapter.muxData.assetId);
+      if (chapter.blobData?.videoUrl) {
+        await  del(chapter.blobData.videoUrl);
       }
     }
 
